@@ -1,0 +1,75 @@
+def main():
+    # Definindo a senha
+    senha_correta = "senha123"
+    
+    # Solicitando o nome e a senha
+    nome = input("Digite seu nome: ")
+    senha = input("Digite sua senha: ")
+
+    # Verificando a senha
+    if senha == senha_correta:
+        print(f"Bem-vindo, {nome}!")
+        menu()
+    else:
+        print("Acesso negado. Senha incorreta.")
+
+def menu():
+    while True:
+        print("\nMenu:")
+        print("1. Acessar a calculadora")
+        print("2. Calcular IMC")
+        print("3. Calcular idade")
+        print("4. Sair")
+
+        opcao = input("Escolha uma opção (1-4): ")
+
+        if opcao == "1":
+            calculadora()
+        elif opcao == "2":
+            calcular_imc()
+        elif opcao == "3":
+            calcular_idade()
+        elif opcao == "4":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida. Tente novamente.")
+
+def calculadora():
+    print("Calculadora")
+    num1 = float(input("Digite o primeiro número: "))
+    operacao = input("Digite a operação (+, -, *, /): ")
+    num2 = float(input("Digite o segundo número: "))
+    
+    if operacao == '+':
+        resultado = num1 + num2
+    elif operacao == '-':
+        resultado = num1 - num2
+    elif operacao == '*':
+        resultado = num1 * num2
+    elif operacao == '/':
+        if num2 != 0:
+            resultado = num1 / num2
+        else:
+            print("Erro: Divisão por zero.")
+            return
+    else:
+        print("Operação inválida.")
+        return
+
+    print(f"O resultado é: {resultado}")
+
+def calcular_imc():
+    peso = float(input("Digite seu peso em kg: "))
+    altura = float(input("Digite sua altura em metros: "))
+    imc = peso / (altura ** 2)
+    print(f"Seu IMC é: {imc:.2f}")
+
+def calcular_idade():
+    ano_nascimento = int(input("Digite seu ano de nascimento: "))
+    ano_atual = 2024  # Altere conforme necessário
+    idade = ano_atual - ano_nascimento
+    print(f"Sua idade é: {idade} anos")
+
+if __name__ == "__main__":
+    main()
